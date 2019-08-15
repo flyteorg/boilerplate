@@ -12,9 +12,7 @@ COPY Gopkg.* /go/src/github.com/lyft/{{REPOSITORY}}/
 WORKDIR /go/src/github.com/lyft/{{REPOSITORY}}
 
 # Pull dependencies
-RUN : \
-  && ssh-keyscan github.com >> ~/.ssh/known_hosts \
-  && dep ensure -vendor-only \
+RUN dep ensure -vendor-only
 
 # COPY the rest of the source code
 COPY . /go/src/github.com/lyft/{{REPOSITORY}}/
