@@ -1,6 +1,6 @@
 # WARNING: THIS FILE IS MANAGED IN THE 'BOILERPLATE' REPO AND COPIED TO OTHER REPOSITORIES.
 # ONLY EDIT THIS FILE FROM WITHIN THE 'LYFT/BOILERPLATE' REPOSITORY:
-# 
+#
 # TO OPT OUT OF UPDATES, SEE https://github.com/lyft/boilerplate/blob/master/Readme.rst
 
 
@@ -16,7 +16,6 @@ goimports:
 	@boilerplate/lyft/golang_test_targets/goimports
 
 .PHONY: install download_tooling mod_download
-
 download_tooling: #download dependencies (including test deps) for the package
 	boilerplate/lyft/golang_test_targets/download_tooling.sh
 
