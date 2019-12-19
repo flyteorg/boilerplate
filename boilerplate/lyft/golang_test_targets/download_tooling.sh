@@ -8,40 +8,19 @@
 # ignore any changes made to the go mod files.
 # (See https://github.com/golang/go/issues/30515 for some background context)
 
-go_get_mockery () {
+
+go_install_tool () {
   tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
-  echo tmp_dir
+  echo "Installing $1 inside ${tmp_dir}"
   cp go.mod go.sum "$tmp_dir"
   pushd "$tmp_dir"
-  go get github.com/vektra/mockery/cmd/mockery
+  go get $1
   popd
 }
 
-go_get_pflags () {
-  tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
-  cp go.mod go.sum "$tmp_dir"
-  pushd "$tmp_dir"
-  go get github.com/lyft/flytestdlib/cli/pflags
-  popd
-}
+tools=("github.com/vektra/mockery/cmd/mockery" "github.com/lyft/flytestdlib/cli/pflags" "github.com/golangci/golangci-lint/cmd/golangci-lint" "github.com/alvaroloes/enumer")
 
-go_get_lint () {
-  tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
-  cp go.mod go.sum "$tmp_dir"
-  pushd "$tmp_dir"
-  go get github.com/golangci/golangci-lint/cmd/golangci-lint
-  popd
-}
-
-go_get_enumer () {
-  tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
-  cp go.mod go.sum "$tmp_dir"
-  pushd "$tmp_dir"
-  go get github.com/alvaroloes/enumer
-  popd
-}
-
-go_get_mockery
-go_get_pflags
-go_get_lint
-go_get_enumer
+for folder in "${tools[@]}"
+do
+    go_install_tool $folder
+done
