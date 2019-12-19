@@ -6,7 +6,7 @@
 
 .PHONY: lint
 lint: #lints the package for common code smells
-	which golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint
+	which golangci-lint || make download_tooling
 	GL_DEBUG=linters_output,env golangci-lint run --deadline=5m --exclude deprecated -v
 
 # If code is failing goimports linter, this will fix.
