@@ -17,7 +17,7 @@ goimports:
 
 .PHONY: install download_tooling mod_download
 download_tooling: #download dependencies (including test deps) for the package
-	boilerplate/lyft/golang_test_targets/download_tooling.sh
+	@boilerplate/lyft/golang_test_targets/download_tooling.sh
 
 mod_download: #download dependencies (including test deps) for the package
 	go mod download
