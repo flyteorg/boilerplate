@@ -15,9 +15,17 @@ lint: #lints the package for common code smells
 goimports:
 	@boilerplate/lyft/golang_test_targets/goimports
 
-.PHONY: install
-install: #download dependencies (including test deps) for the package
+.PHONY: install download_tooling mod_download
+
+download_tooling: #download dependencies (including test deps) for the package
+	boilerplate/lyft/golang_test_targets/download_tooling.sh
+
+mod_download: #download dependencies (including test deps) for the package
 	go mod download
+
+.PHONY: install
+install:
+	download_tooling mod_download
 
 .PHONY: test_unit
 test_unit:
