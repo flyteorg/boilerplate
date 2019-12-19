@@ -8,6 +8,7 @@
 # ignore any changes made to the go mod files.
 # (See https://github.com/golang/go/issues/30515 for some background context)
 
+set -e
 
 go_install_tool () {
   tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
@@ -18,9 +19,14 @@ go_install_tool () {
   popd
 }
 
-tools=("github.com/vektra/mockery/cmd/mockery" "github.com/lyft/flytestdlib/cli/pflags" "github.com/golangci/golangci-lint/cmd/golangci-lint" "github.com/alvaroloes/enumer")
+tools=(
+  "github.com/vektra/mockery/cmd/mockery"
+  "github.com/lyft/flytestdlib/cli/pflags"
+  "github.com/golangci/golangci-lint/cmd/golangci-lint"
+  "github.com/alvaroloes/enumer"
+)
 
-for folder in "${tools[@]}"
+for tool in "${tools[@]}"
 do
-    go_install_tool $folder
+    go_install_tool $tool
 done
