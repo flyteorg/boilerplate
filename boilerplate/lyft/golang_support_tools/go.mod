@@ -1,4 +1,4 @@
-module github.com/lyft/flyteidl
+module github.com/lyft/boilerplate
 
 go 1.13
 
