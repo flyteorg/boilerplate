@@ -16,10 +16,10 @@ set -e
 # List of tools to go get
 # In the format of "<cli>:<package>" or ":<package>" if no cli
 tools=(
-  "mockery:github.com/vektra/mockery/cmd/mockery"
-  "pflags:github.com/lyft/flytestdlib/cli/pflags"
-  "golangci-lint:github.com/golangci/golangci-lint/cmd/golangci-lint"
-  "enumer:github.com/alvaroloes/enumer"
+  "github.com/vektra/mockery/cmd/mockery"
+  "github.com/lyft/flytestdlib/cli/pflags"
+  "github.com/golangci/golangci-lint/cmd/golangci-lint"
+  "github.com/alvaroloes/enumer"
 )
 
 tmp_dir=$(mktemp -d -t gotooling-XXX)
@@ -29,10 +29,8 @@ pushd "$tmp_dir"
 
 for tool in "${tools[@]}"
 do
-    cli=$(echo "$tool" | cut -d':' -f1)
-    package=$(echo "$tool" | cut -d':' -f2)
-    echo "Installing ${package}"
-    GO111MODULE=on go install "$package"
+    echo "Installing ${tool}"
+    GO111MODULE=on go install $tool
 done
 
 popd
