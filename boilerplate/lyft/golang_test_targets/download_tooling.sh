@@ -19,8 +19,8 @@ tools=(
   "enumer:github.com/alvaroloes/enumer"
 )
 
-tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
-echo $tmp_dir
+tmp_dir=$(mktemp -d -t gotooling-XXX)
+echo "Using temp directory ${tmp_dir}"
 cp -R boilerplate/lyft/golang_support_tools/* $tmp_dir
 pushd "$tmp_dir"
 
