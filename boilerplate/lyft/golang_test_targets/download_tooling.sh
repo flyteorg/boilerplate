@@ -29,7 +29,7 @@ do
     cli=$(echo "$tool" | cut -d':' -f1)
     package=$(echo "$tool" | cut -d':' -f2)
     echo "Installing ${package}"
-    go install "$package"
+    GO111MODULE=on go install "$package"
 done
 
 popd
