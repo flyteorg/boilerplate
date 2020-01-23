@@ -28,9 +28,14 @@ tools=(
   "enumer:github.com/alvaroloes/enumer"
 )
 
-for tool in "${tools[@]}"
-do
-    cli=$(echo "$tool" | cut -d':' -f1)
-    package=$(echo "$tool" | cut -d':' -f2)
-    command -v "$cli" || go_install_tool "$package"
-done
+tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
+echo $tmp_dir
+pushd "$tmp_dir"
+echo `pwd`
+#cp -R golang_support
+#for tool in "${tools[@]}"
+#do
+#    cli=$(echo "$tool" | cut -d':' -f1)
+#    package=$(echo "$tool" | cut -d':' -f2)
+#    command -v "$cli" || go_install_tool "$package"
+#done
