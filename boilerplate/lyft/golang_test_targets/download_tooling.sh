@@ -10,15 +10,6 @@
 
 set -e
 
-go_install_tool () {
-  tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
-  echo "Installing $1 inside $tmp_dir"
-  cp go.mod go.sum "$tmp_dir"
-  pushd "$tmp_dir"
-  go get "$1"
-  popd
-}
-
 # List of tools to go get
 # In the format of "<cli>:<package>" or ":<package>" if no cli
 tools=(
@@ -30,12 +21,15 @@ tools=(
 
 tmp_dir=$(mktemp -d -t gotooling-XXXXXXXXXX)
 echo $tmp_dir
+cp -R boilerplate/lyft/golang_support_tools/* $tmp_dir
 pushd "$tmp_dir"
-echo `pwd`
-#cp -R golang_support
-#for tool in "${tools[@]}"
-#do
-#    cli=$(echo "$tool" | cut -d':' -f1)
-#    package=$(echo "$tool" | cut -d':' -f2)
-#    command -v "$cli" || go_install_tool "$package"
-#done
+
+for tool in "${tools[@]}"
+do
+    cli=$(echo "$tool" | cut -d':' -f1)
+    package=$(echo "$tool" | cut -d':' -f2)
+    echo "Installing ${package}"
+    go install "$package"
+done
+
+popd
