@@ -11,7 +11,7 @@ _Please replace this text with a description of what this PR accomplishes._
  - [ ] Code completed
  - [ ] Smoke tested
  - [ ] Unit tests added
- - [ ] Code documentation Added
+ - [ ] Code documentation added
  - [ ] Any pending items have an associated Issue
 
 ## Complete description
