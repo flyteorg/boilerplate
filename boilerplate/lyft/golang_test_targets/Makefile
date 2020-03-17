@@ -39,9 +39,10 @@ test_benchmark:
 
 .PHONY: test_unit_cover
 test_unit_cover:
-	go test ./... -coverprofile /tmp/cover.out -covermode=count; go tool cover -func /tmp/cover.out
+	go test ./... -coverprofile /tmp/cover.out -covermode=count
+	go tool cover -func /tmp/cover.out
 
 .PHONY: test_unit_visual
 test_unit_visual:
-	go test ./... -coverprofile /tmp/cover.out -covermode=count; go tool cover -html=/tmp/cover.out 
-
+	go test ./... -coverprofile /tmp/cover.out -covermode=count
+	go tool cover -html=/tmp/cover.out
