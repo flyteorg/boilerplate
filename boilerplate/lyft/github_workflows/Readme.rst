@@ -7,7 +7,10 @@ Provides a two github actions workflows.
 
 Add ``lyft/github_workflows`` to your ``boilerplate/update.cfg`` file.
 
-Create a secret in github -> repo settings named ``flytegithub_dockerhub`` and put ``flytegithub`` dockerhub user's password.
+Create 3 secrets in github -> repo settings:
+	- ``flytegithub_repo`` is the repo name that will be used to push images to dockerhub as well as to github docker repo.
+	- ``flytegithub_dockerhub_username`` with a user in dockerhub that has permissions to push to the repo.
+	- ``flytegithub_dockerhub`` with the password for the above user.
 
 The actions will push to 4 repos:
 
