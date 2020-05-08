@@ -9,6 +9,8 @@ Add ``lyft/github_workflows`` to your ``boilerplate/update.cfg`` file.
 
 Add a github secret ``package_name`` with the name to use for publishing (e.g. ``flytepropeller``). Typicaly, this will be the same name as the repository.
 
+*Note*: If you are working on a fork, include that prefix in your package name (``myfork/flytepropeller``).
+
 The actions will push to 2 repos:
 
 	1. ``docker.pkg.github.com/lyft/<repo>/<package_name>``
