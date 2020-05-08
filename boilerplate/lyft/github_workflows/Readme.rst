@@ -7,7 +7,7 @@ Provides a two github actions workflows.
 
 Add ``lyft/github_workflows`` to your ``boilerplate/update.cfg`` file.
 
-Add a github secret ``package_name`` with a the name of your fork (e.g. ``flytepropeller``).
+Add a github secret ``package_name`` with the name to use for publishing (e.g. ``flytepropeller``). Typicaly, this will be the same name as the repository.
 
 The actions will push to 2 repos:
 
