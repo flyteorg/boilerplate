@@ -20,7 +20,7 @@ echo ""
 
 
 CONFIG_FILE="${DIR}/update.cfg"
-README="https://github.com/lyft/boilerplate/blob/master/Readme.rst"
+README="https://github.com/flyteorg/boilerplate/blob/master/Readme.rst"
 
 if [ ! -f "$CONFIG_FILE" ]; then
   echo "$CONFIG_FILE not found."
