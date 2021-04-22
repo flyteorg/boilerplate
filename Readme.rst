@@ -53,7 +53,15 @@ Boilerplate files are organized into "conventions". Different services require d
 
 To opt into a convention, configure ``boilerplate/update.cfg`` with the conventions that you'd like to opt in to. The convention files live in `<https://github.com/lyft/boilerplate/tree/master/boilerplate>`_ and are specified in the format ``{namespace}/{convention}`` 
 
-For example, to opt-into lyft's ``docker_build`` file, add ``lyft/docker_build`` to your ``boilerplate/update.cfg`` file.
+For example, to opt-into lyft's ``docker_build`` and ``golangci_file`` conventions, your ``boilerplate/update.cfg`` file might look like this:
+
+::
+
+  # Use standard docker build targets
+  lyft/docker_build
+  
+  # Common linting configuration for golang
+  lyft/golangci_file
 
 below is a full list of available conventions.
 
