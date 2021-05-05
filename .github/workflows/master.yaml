@@ -1,4 +1,4 @@
-name: Invoke Workflow
+name: Propagate boilerplate changes
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        COMPONENT: [flyteadmin, flytepropeller, flyteconsole, flytecopilot, flyteplugins, datacatalog, flytectl]
+        COMPONENT: [flyteadmin, flytepropeller, flyteconsole, flytecopilot, flyteplugins, datacatalog, flytectl, flytestdlib, flytesnacks, flytekit, flyteidl]
       fail-fast: false
     steps:
       - uses: actions/checkout@v2
