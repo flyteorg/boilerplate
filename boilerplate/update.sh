@@ -12,7 +12,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 OUT="$(mktemp -d)"
 trap 'rm -fr $OUT' EXIT
 
-git clone git@github.com:flyteorg/boilerplate.git "${OUT}"
+git clone https://github.com/flyteorg/boilerplate.git "${OUT}"
 
 echo "Updating the update.sh script."
 cp "${OUT}/boilerplate/update.sh" "${DIR}/update.sh"
