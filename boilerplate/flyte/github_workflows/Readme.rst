@@ -5,7 +5,7 @@ Provides a two github actions workflows.
 
 **To Enable:**
 
-Add ``lyft/github_workflows`` to your ``boilerplate/update.cfg`` file.
+Add ``flyteorg/github_workflows`` to your ``boilerplate/update.cfg`` file.
 
 Add a github secret ``package_name`` with the name to use for publishing (e.g. ``flytepropeller``). Typicaly, this will be the same name as the repository.
 
@@ -13,8 +13,8 @@ Add a github secret ``package_name`` with the name to use for publishing (e.g. `
 
 The actions will push to 2 repos:
 
-	1. ``docker.pkg.github.com/lyft/<repo>/<package_name>``
-	2. ``docker.pkg.github.com/lyft/<repo>/<package_name>-stages`` : this repo is used to cache build stages to speed up iterative builds after.
+	1. ``docker.pkg.github.com/flyteorg/<repo>/<package_name>``
+	2. ``docker.pkg.github.com/flyteorg/<repo>/<package_name>-stages`` : this repo is used to cache build stages to speed up iterative builds after.
 
 There are two workflows that get deployed:
 
