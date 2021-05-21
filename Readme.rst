@@ -37,7 +37,7 @@ Adding boilerplate to a repository
   update_boilerplate:
     @boilerplate/update.sh
 
-3. Copy the `<https://github.com/lyft/boilerplate/blob/master/boilerplate/update.sh>`_ script and paste it to ``boilerplate/update.sh`` of your repository. Make it executable with ``chmod +x boilerplate/update.sh``
+3. Copy the `<https://github.com/flyteorg/boilerplate/blob/master/boilerplate/update.sh>`_ script and paste it to ``boilerplate/update.sh`` of your repository. Make it executable with ``chmod +x boilerplate/update.sh``
 
 4. Add a file ``boilerplate/update.cfg`` and configure it with the options below.
 
@@ -51,31 +51,31 @@ Configuration
 
 Boilerplate files are organized into "conventions". Different services require different conventions. For example, python services might require a python Dockerfile, while golang services need a golang Dockerfile. The boilerplate config allows you to opt into only the conventions that suit your needs. 
 
-To opt into a convention, configure ``boilerplate/update.cfg`` with the conventions that you'd like to opt in to. The convention files live in `<https://github.com/lyft/boilerplate/tree/master/boilerplate>`_ and are specified in the format ``{namespace}/{convention}`` 
+To opt into a convention, configure ``boilerplate/update.cfg`` with the conventions that you'd like to opt in to. The convention files live in `<https://github.com/flyteorg/boilerplate/tree/master/boilerplate>`_ and are specified in the format ``{namespace}/{convention}`` 
 
-For example, to opt-into lyft's ``docker_build`` and ``golangci_file`` conventions, your ``boilerplate/update.cfg`` file might look like this:
+For example, to opt-into flyteorg's ``docker_build`` and ``golangci_file`` conventions, your ``boilerplate/update.cfg`` file might look like this:
 
 ::
 
   # Use standard docker build targets
-  lyft/docker_build
+  flyteorg/docker_build
   
   # Common linting configuration for golang
-  lyft/golangci_file
+  flyteorg/golangci_file
 
 below is a full list of available conventions.
 
-`lyft/docker_build <https://github.com/lyft/boilerplate/blob/master/boilerplate/lyft/docker_build/Readme.rst>`_
+`flyteorg/docker_build <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/docker_build/Readme.rst>`_
 
-`lyft/golang_dockerfile <https://github.com/lyft/boilerplate/blob/master/boilerplate/lyft/golang_dockerfile/Readme.rst>`_
+`flyteorg/golang_dockerfile <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golang_dockerfile/Readme.rst>`_
 
-`lyft/golangci_file <https://github.com/lyft/boilerplate/blob/master/boilerplate/lyft/golangci_file/Readme.rst>`_
+`flyteorg/golangci_file <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golangci_file/Readme.rst>`_
 
-`lyft/golang_test_targets <https://github.com/lyft/boilerplate/blob/master/boilerplate/lyft/golang_dockerfile/Readme.rst>`_
+`flyteorg/golang_test_targets <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golang_dockerfile/Readme.rst>`_
 
-`lyft/pull_request_template <https://github.com/lyft/boilerplate/blob/master/boilerplate/lyft/golang_test_targets/Readme.rst>`_
+`flyteorg/pull_request_template <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golang_test_targets/Readme.rst>`_
 
-`lyft/flyte_golang_compile <https://github.com/lyft/boilerplate/blob/master/boilerplate/lyft/flyte_golang_compile/Readme.rst>`_
+`flyteorg/flyte_golang_compile <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/flyte_golang_compile/Readme.rst>`_
 
 *Note*: some conventions require some minor configurations, the Readme of the convention should inform you of anything else you need to do.
 
@@ -83,7 +83,7 @@ below is a full list of available conventions.
 Developing boilerplate
 ----------------------
 
-Boilerplate conventions live in the `boilerplate <https://github.com/lyft/boilerplate/tree/master/boilerplate>`_ directory, and come in the format ``{{ namespace }}/{{ convention }}``. This directory should contain all boilerplate files, along with two special files.
+Boilerplate conventions live in the `boilerplate <https://github.com/flyteorg/boilerplate/tree/master/boilerplate>`_ directory, and come in the format ``{{ namespace }}/{{ convention }}``. This directory should contain all boilerplate files, along with two special files.
 
 Readme.rst
 **********
