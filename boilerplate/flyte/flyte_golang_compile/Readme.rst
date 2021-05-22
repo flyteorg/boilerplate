@@ -13,4 +13,4 @@ Add the following to your Makefile
 
   .PHONY: compile_linux
   compile_linux:
-    PACKAGES={{ *your packages }} OUTPUT={{ /path/to/output }} ./boilerplate/flyteorg/flyte_golang_compile.sh
+    PACKAGES={{ *your packages }} OUTPUT={{ /path/to/output }} ./boilerplate/flyte/flyte_golang_compile.sh

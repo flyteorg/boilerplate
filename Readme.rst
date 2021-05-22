@@ -65,17 +65,17 @@ For example, to opt-into flyteorg's ``docker_build`` and ``golangci_file`` conve
 
 below is a full list of available conventions.
 
-`flyteorg/docker_build <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/docker_build/Readme.rst>`_
+`flyteorg/docker_build <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyte/docker_build/Readme.rst>`_
 
-`flyteorg/golang_dockerfile <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golang_dockerfile/Readme.rst>`_
+`flyteorg/golang_dockerfile <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyte/golang_dockerfile/Readme.rst>`_
 
-`flyteorg/golangci_file <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golangci_file/Readme.rst>`_
+`flyteorg/golangci_file <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyte/golangci_file/Readme.rst>`_
 
-`flyteorg/golang_test_targets <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golang_dockerfile/Readme.rst>`_
+`flyteorg/golang_test_targets <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyte/golang_dockerfile/Readme.rst>`_
 
-`flyteorg/pull_request_template <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/golang_test_targets/Readme.rst>`_
+`flyteorg/pull_request_template <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyte/golang_test_targets/Readme.rst>`_
 
-`flyteorg/flyte_golang_compile <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyteorg/flyte_golang_compile/Readme.rst>`_
+`flyteorg/flyte_golang_compile <https://github.com/flyteorg/boilerplate/blob/master/boilerplate/flyte/flyte_golang_compile/Readme.rst>`_
 
 *Note*: some conventions require some minor configurations, the Readme of the convention should inform you of anything else you need to do.
 

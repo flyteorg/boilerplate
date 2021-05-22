@@ -21,11 +21,11 @@ Make sure you're using ``go mod`` for dependency management.
 
 Provide a ``.golangci`` configuration (the lint target requires it).
 
-Add ``include boilerplate/flyteorg/golang_test_targets/Makefile`` in your main ``Makefile`` _after_ your REPOSITORY environment variable
+Add ``include boilerplate/flyte/golang_test_targets/Makefile`` in your main ``Makefile`` _after_ your REPOSITORY environment variable
 
 ::
 
     REPOSITORY=<myreponame>
-    include boilerplate/flyteorg/golang_test_targets/Makefile
+    include boilerplate/flyte/golang_test_targets/Makefile
 
 (this ensures the extra make targets get included in your main Makefile)
