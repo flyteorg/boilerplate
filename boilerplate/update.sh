@@ -17,7 +17,8 @@ git clone https://github.com/flyteorg/boilerplate.git "${OUT}"
 echo "Updating the update.sh script."
 cp "${OUT}/boilerplate/update.sh" "${DIR}/update.sh"
 
-CONFIG_FILE="${DIR}/update.cfg"
+CONFIG_FILE="${OUT}/boilerplate/config.json"
+OLD_CONFIG_FILE="${DIR}/update.cfg"
 README="https://github.com/flyteorg/boilerplate/blob/master/Readme.rst"
 
 if [ ! -f "$CONFIG_FILE" ]; then
@@ -33,7 +34,7 @@ if [ -z "$REPOSITORY" ]; then
   exit 1
 fi
 
-while read -r directory junk; do
+for directory in $(cat $CONFIG_FILE | jq -r --arg repo $REPOSITORY '.flyteorg[($repo)] | .[]'); do
   # Skip comment lines (which can have leading whitespace)
   if [[ "$directory" == '#'* ]]; then
     continue
@@ -42,6 +43,9 @@ while read -r directory junk; do
   if [[ "$directory" == "" ]]; then
     continue
   fi
+
+ 
+
   # Lines like
   #    valid/path  other_junk
   # are not acceptable, unless `other_junk` is a comment
@@ -51,10 +55,22 @@ while read -r directory junk; do
   fi
 
   dir_path="${OUT}/boilerplate/${directory}"
+ # copy flytebot automation for boilerplate
+  if [[ "$directory" == "flyte/flyte-bot/boilerplate-automation" ]]; then
+    cp "${OUT}/boilerplate/${directory}.yml"  "${DIR}/${directory}.yml"
+    continue
+  fi
+
   # Make sure the directory exists
   if ! [[ -d "$dir_path" ]]; then
     echo "Invalid boilerplate directory: '$directory'"
     exit 1
+  fi
+
+  # TODO:(Yuvraj) Remove this check after first merge 
+  # remove if older config exist
+  if [[ -d "$OLD_CONFIG_FILE" ]]; then
+    rm $OLD_CONFIG_FILE
   fi
 
   echo "***********************************************************************************"
@@ -70,4 +86,4 @@ while read -r directory junk; do
   fi
   echo "***********************************************************************************"
   echo ""
-done < "$CONFIG_FILE"
+done
