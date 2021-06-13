@@ -57,7 +57,7 @@ for directory in $(cat $CONFIG_FILE | jq -r --arg repo $REPOSITORY '.flyteorg[($
   dir_path="${OUT}/boilerplate/${directory}"
  # copy flytebot automation for boilerplate
   if [[ "$directory" == "flyte/flyte-bot/boilerplate-automation" ]]; then
-    cp "${OUT}/boilerplate/${directory}.yml"  "${DIR}/${directory}.yml"
+    cp "${OUT}/boilerplate/${directory}.yml"  "${DIR}/.github/workflows/boilerplate-automation.yml"
     continue
   fi
 
