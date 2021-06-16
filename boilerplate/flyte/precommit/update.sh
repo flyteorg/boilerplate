@@ -44,6 +44,8 @@ if test ! -d "${DOT_GIT_DIR}"; then
   DOT_GIT_DIR=$(git rev-parse --git-dir)
 fi
 
+mkdir -p ${DOT_GIT_DIR}/hooks
+
 HOOKS_DIR="${DOT_GIT_DIR}/hooks"
 HOOKS_DIR_RELPATH=$(relpath "${HOOKS_DIR}" "${PWD}")
 
