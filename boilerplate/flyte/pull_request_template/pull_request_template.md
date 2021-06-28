@@ -24,7 +24,7 @@ _Please replace this text with a description of what this PR accomplishes._
  _How did you fix the bug, make the feature etc. Link to any design docs etc_
 
 ## Tracking Issue
-https://github.com/flyteorg/flyte/issues/<number>
+fixes https://github.com/flyteorg/flyte/issues/<number>
 
 ## Follow-up issue
 _NA_
