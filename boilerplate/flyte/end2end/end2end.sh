@@ -23,7 +23,7 @@ then
     sed -i.bak -e "s_${IMAGE_NAME}:.*_${IMAGE}_g" "${OUT}"/kustomize/base/propeller/deployment.yaml
   fi
 
-  if [ "${IMAGE}" == "flyteadmin" ]
+  if [ "${IMAGE_NAME}" == "flyteadmin" ]
   then
     sed -i.bak -e "s_${IMAGE_NAME}:.*_${IMAGE}_g" "${OUT}"/kustomize/base/admindeployment/deployment.yaml
   fi
