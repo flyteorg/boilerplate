@@ -9,11 +9,4 @@ set -e
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-OUT="${DIR}/tmp"
-rm -rf ${OUT}
-git clone https://github.com/flyteorg/flyte.git "${OUT}"
-
-pushd ${OUT}
-
-make end2end_execute
-popd
+python ./boilerplate/flyte/end2end/run-tests.py $VERSION $PRIORITIES
