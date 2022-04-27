@@ -1,6 +1,7 @@
 name: Propagate boilerplate changes
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
@@ -16,6 +17,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Update boilerplate 
         run: |
-          WORKFLOW_ID=$(curl -sS https://api.github.com/repos/flyteorg/${{matrix.COMPONENT}}/actions/workflows | jq '.workflows[] | select(.path == ".github/workflows/boilerplate-automation.yml") | {id}' | jq .id)
+          WORKFLOW_ID=$(curl -sS https://api.github.com/repos/flyteorg/${{matrix.COMPONENT}}/actions/workflows | jq '.workflows[] | select(.path == ".github/workflows/upgrade_automation.yml") | {id}' | jq .id)
           curl  -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/flyteorg/${{matrix.COMPONENT}}/actions/workflows/$WORKFLOW_ID/dispatches -H "Authorization: token ${{ secrets.FLYTE_BOT_PAT }}" -d '{"ref":"master"}'
         shell: bash
