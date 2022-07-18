@@ -264,7 +264,6 @@ def cli(
         return_non_zero_on_failure,
         terminate_workflow_on_failure,
 ):
-
     print(f"return_non_zero_on_failure={return_non_zero_on_failure}")
     results = run(
         flytesnacks_release_tag, priorities, config_file, terminate_workflow_on_failure
@@ -273,13 +272,11 @@ def cli(
     # Write a json object in its own line describing the result of this run to stdout
     print(f"Result of run:\n{json.dumps(results)}")
 
-
     # Return a non-zero exit code if core fails
     if return_non_zero_on_failure:
         for result in results:
             if result["status"] not in ("passing", "coming soon"):
                 sys.exit(1)
-
 
 
 if __name__ == "__main__":
