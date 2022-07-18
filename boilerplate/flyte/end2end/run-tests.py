@@ -15,7 +15,7 @@ from flytekit.remote.executions import FlyteWorkflowExecution
 
 
 WAIT_TIME = 10
-MAX_ATTEMPTS = 60
+MAX_ATTEMPTS = 200
 
 # This dictionary maps the names found in the flytesnacks manifest to a list of workflow names and
 # inputs. This is so we can progressively cover all priorities in the original flytesnacks manifest,
@@ -52,7 +52,7 @@ FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
         # ("core.type_system.enums.enum_wf", {"c": "red"}),
         ("core.type_system.schema.df_wf", {"a": 42}),
         ("core.type_system.typed_schema.wf", {}),
-        ("my.imperative.workflow.example", {"in1": "hello", "in2": "foo"}),
+        #("my.imperative.workflow.example", {"in1": "hello", "in2": "foo"}),
     ],
     "integrations-k8s-spark": [
         ("k8s_spark.pyspark_pi.my_spark", {"triggered_date": datetime.datetime.now()}),
@@ -63,9 +63,9 @@ FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
     "integrations-kftensorflow": [
         ("kftensorflow.tf_mnist.mnist_tensorflow_workflow", {}),
     ],
-    "integrations-pod": [
-        ("pod.pod.pod_workflow", {}),
-    ],
+    # "integrations-pod": [
+    #     ("pod.pod.pod_workflow", {}),
+    # ],
     "integrations-pandera_examples": [
         ("pandera_examples.basic_schema_example.process_data", {}),
         # TODO: investigate type mismatch float -> numpy.float64
@@ -98,10 +98,14 @@ def executions_finished(executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecu
     return True
 
 def sync_executions(remote: FlyteRemote, executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecution]]):
-    for executions in executions_by_wfgroup.values():
-        for execution in executions:
-            print(f"About to sync execution_id={execution.id.name}")
-            remote.sync(execution)
+    try:
+        for executions in executions_by_wfgroup.values():
+            for execution in executions:
+                print(f"About to sync execution_id={execution.id.name}")
+                remote.sync(execution)
+    except:
+        pass
+
 
 def report_executions(executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecution]]):
     for executions in executions_by_wfgroup.values():
@@ -109,10 +113,10 @@ def report_executions(executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecuti
             print(execution)
 
 def schedule_workflow_groups(
-    tag: str,
-    workflow_groups: List[str],
-    remote: FlyteRemote,
-    terminate_workflow_on_failure: bool,
+        tag: str,
+        workflow_groups: List[str],
+        remote: FlyteRemote,
+        terminate_workflow_on_failure: bool,
 ) -> Dict[str, bool]:
     """
     Schedule workflows executions for all workflow gropus and return True if all executions succeed, otherwise
@@ -129,7 +133,7 @@ def schedule_workflow_groups(
     # Wait for all executions to finish
     attempt = 0
     while attempt == 0 or (
-        not executions_finished(executions_by_wfgroup) and attempt < MAX_ATTEMPTS
+            not executions_finished(executions_by_wfgroup) and attempt < MAX_ATTEMPTS
     ):
         attempt += 1
         print(
@@ -168,10 +172,10 @@ def valid(workflow_group):
 
 
 def run(
-    flytesnacks_release_tag: str,
-    priorities: List[str],
-    config_file_path,
-    terminate_workflow_on_failure: bool,
+        flytesnacks_release_tag: str,
+        priorities: List[str],
+        config_file_path,
+        terminate_workflow_on_failure: bool,
 ) -> List[Dict[str, str]]:
     remote = FlyteRemote(
         Config.auto(config_file=config_file_path),
@@ -254,12 +258,13 @@ def run(
 @click.argument("priorities")
 @click.argument("config_file")
 def cli(
-    flytesnacks_release_tag,
-    priorities,
-    config_file,
-    return_non_zero_on_failure,
-    terminate_workflow_on_failure,
+        flytesnacks_release_tag,
+        priorities,
+        config_file,
+        return_non_zero_on_failure,
+        terminate_workflow_on_failure,
 ):
+
     print(f"return_non_zero_on_failure={return_non_zero_on_failure}")
     results = run(
         flytesnacks_release_tag, priorities, config_file, terminate_workflow_on_failure
@@ -268,11 +273,13 @@ def cli(
     # Write a json object in its own line describing the result of this run to stdout
     print(f"Result of run:\n{json.dumps(results)}")
 
+
     # Return a non-zero exit code if core fails
     if return_non_zero_on_failure:
         for result in results:
             if result["status"] not in ("passing", "coming soon"):
                 sys.exit(1)
+
 
 
 if __name__ == "__main__":
