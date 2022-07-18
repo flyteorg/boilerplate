@@ -113,10 +113,10 @@ def report_executions(executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecuti
             print(execution)
 
 def schedule_workflow_groups(
-        tag: str,
-        workflow_groups: List[str],
-        remote: FlyteRemote,
-        terminate_workflow_on_failure: bool,
+    tag: str,
+    workflow_groups: List[str],
+    remote: FlyteRemote,
+    terminate_workflow_on_failure: bool,
 ) -> Dict[str, bool]:
     """
     Schedule workflows executions for all workflow gropus and return True if all executions succeed, otherwise
