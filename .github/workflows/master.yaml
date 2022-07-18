@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        COMPONENT: [flyteadmin, flytepropeller, flyteconsole, flytecopilot, flyteplugins, datacatalog, flytectl, flytestdlib, flytesnacks, flytekit, flyteidl]
+        COMPONENT: [flyteadmin, flytepropeller, flyteconsole, flytecopilot, flyteplugins, datacatalog, flytectl, flytestdlib, flytesnacks, flytekit, flyteidl, flyte]
       fail-fast: false
     steps:
       - uses: actions/checkout@v2
