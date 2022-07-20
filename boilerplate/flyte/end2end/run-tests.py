@@ -104,7 +104,8 @@ def sync_executions(remote: FlyteRemote, executions_by_wfgroup: Dict[str, List[F
                 print(f"About to sync execution_id={execution.id.name}")
                 remote.sync(execution)
     except:
-        pass
+        print("GOT TO THE EXCEPT")
+        print("COUNT THIS!")
 
 
 def report_executions(executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecution]]):
