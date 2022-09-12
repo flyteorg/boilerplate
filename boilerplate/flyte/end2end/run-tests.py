@@ -21,6 +21,10 @@ MAX_ATTEMPTS = 200
 # inputs. This is so we can progressively cover all priorities in the original flytesnacks manifest,
 # starting with "core".
 FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
+    "lite": [
+        ("core.flyte_basics.hello_world.my_wf", {}),
+        ("core.flyte_basics.lp.go_greet", {"day_of_week": "5", "number": 3, "am": True}),
+    ],
     "core": [
         ("core.control_flow.chain_entities.chain_workflows_wf", {}),
         ("core.control_flow.dynamics.wf", {"s1": "Pear", "s2": "Earth"}),
@@ -190,10 +194,11 @@ def run(
                    f"{flytesnacks_release_tag}/cookbook/flyte_tests_manifest.json"
     r = requests.get(manifest_url)
     parsed_manifest = r.json()
+    workflow_groups = []
+    workflow_groups = ["lite"] if "lite" in priorities else [
+            group["name"] for group in parsed_manifest if group["priority"] in priorities
+        ]
 
-    workflow_groups = [
-        group["name"] for group in parsed_manifest if group["priority"] in priorities
-    ]
     results = []
     valid_workgroups = []
     for workflow_group in workflow_groups:
