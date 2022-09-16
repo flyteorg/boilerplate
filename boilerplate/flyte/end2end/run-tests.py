@@ -26,6 +26,7 @@ FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
         ("core.flyte_basics.lp.go_greet", {"day_of_week": "5", "number": 3, "am": True}),
     ],
     "core": [
+        ("core.flyte_basics.deck.wf", {}),
         ("core.control_flow.chain_entities.chain_workflows_wf", {}),
         ("core.control_flow.dynamics.wf", {"s1": "Pear", "s2": "Earth"}),
         ("core.control_flow.map_task.my_map_workflow", {"a": [1, 2, 3, 4, 5]}),
