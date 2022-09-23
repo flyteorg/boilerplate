@@ -27,7 +27,8 @@ FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
     ],
     "core": [
         ("core.flyte_basics.deck.wf", {}),
-        ("core.control_flow.chain_entities.chain_workflows_wf", {}),
+        # The chain_workflows example in flytesnacks expects to be running in a sandbox.
+        # ("core.control_flow.chain_entities.chain_workflows_wf", {}),
         ("core.control_flow.dynamics.wf", {"s1": "Pear", "s2": "Earth"}),
         ("core.control_flow.map_task.my_map_workflow", {"a": [1, 2, 3, 4, 5]}),
         # Workflows that use nested executions cannot be launched via flyteremote.
