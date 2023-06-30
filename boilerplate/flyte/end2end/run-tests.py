@@ -22,8 +22,8 @@ MAX_ATTEMPTS = 200
 # starting with "core".
 FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
     "lite": [
-        ("core.flyte_basics.hello_world.my_wf", {}),
-        ("core.flyte_basics.lp.go_greet", {"day_of_week": "5", "number": 3, "am": True}),
+        ("basics.hello_world.my_wf", {}),
+        ("basics.lp.go_greet", {"day_of_week": "5", "number": 3, "am": True}),
     ],
     "core": [
         ("basics.deck.wf", {}),
