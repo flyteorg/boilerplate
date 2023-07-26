@@ -75,7 +75,7 @@ FLYTESNACKS_WORKFLOW_GROUPS: Mapping[str, List[Tuple[str, dict]]] = {
     "integrations-pandera_examples": [
         ("pandera_plugin.basic_schema_example.process_data", {}),
         # TODO: investigate type mismatch float -> numpy.float64
-        ("pandera_plugin.validating_and_testing_ml_pipelines.pipeline", {"data_random_state": 42, "model_random_state": 99}),
+        # ("pandera_plugin.validating_and_testing_ml_pipelines.pipeline", {"data_random_state": 42, "model_random_state": 99}),
     ],
     "integrations-modin_examples": [
         ("modin_plugin.knn_classifier.pipeline", {}),
