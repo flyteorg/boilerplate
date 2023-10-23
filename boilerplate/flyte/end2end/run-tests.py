@@ -260,9 +260,6 @@ def run(
     is_flag=True,
     help="Abort failing workflows upon exit",
 )
-@click.argument("flytesnacks_release_tag")
-@click.argument("priorities")
-@click.argument("config_file")
 @click.option(
     "--test_project_name",
     default="flytesnacks",
@@ -275,6 +272,9 @@ def run(
     is_flag=False,
     help="Name of domain in project to run functional tests on",
 )
+@click.argument("flytesnacks_release_tag")
+@click.argument("priorities")
+@click.argument("config_file")
 def cli(
     flytesnacks_release_tag,
     priorities,
