@@ -262,12 +262,14 @@ def run(
 )
 @click.option(
     "--test_project_name",
+    type=str,
     default="flytesnacks",
     is_flag=False,
     help="Name of project to run functional tests on"
 )
 @click.option(
     "--test_project_domain",
+    type=str,
     default="development",
     is_flag=False,
     help="Name of domain in project to run functional tests on",
