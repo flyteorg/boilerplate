@@ -179,11 +179,13 @@ def run(
     priorities: List[str],
     config_file_path,
     terminate_workflow_on_failure: bool,
+    test_project_name: str,
+    test_project_domain: str,
 ) -> List[Dict[str, str]]:
     remote = FlyteRemote(
         Config.auto(config_file=config_file_path),
-        default_project="flytesnacks",
-        default_domain="development",
+        test_project_name,
+        test_project_domain,
     )
 
     # For a given release tag and priority, this function filters the workflow groups from the flytesnacks
@@ -258,6 +260,20 @@ def run(
     is_flag=True,
     help="Abort failing workflows upon exit",
 )
+@click.option(
+    "--test_project_name",
+    default="flytesnacks",
+    type=str,
+    is_flag=False,
+    help="Name of project to run functional tests on"
+)
+@click.option(
+    "--test_project_domain",
+    default="development",
+    type=str,
+    is_flag=False,
+    help="Name of domain in project to run functional tests on",
+)
 @click.argument("flytesnacks_release_tag")
 @click.argument("priorities")
 @click.argument("config_file")
@@ -267,9 +283,12 @@ def cli(
     config_file,
     return_non_zero_on_failure,
     terminate_workflow_on_failure,
+    test_project_name,
+    test_project_domain,
 ):
     print(f"return_non_zero_on_failure={return_non_zero_on_failure}")
-    results = run(flytesnacks_release_tag, priorities, config_file, terminate_workflow_on_failure)
+    results = run(flytesnacks_release_tag, priorities, config_file, terminate_workflow_on_failure, test_project_name,
+                  test_project_domain)
 
     # Write a json object in its own line describing the result of this run to stdout
     print(f"Result of run:\n{json.dumps(results)}")
