@@ -264,13 +264,13 @@ def run(
 @click.argument("priorities")
 @click.argument("config_file")
 @click.option(
-    "test_project_name",
+    "--test_project_name",
     default="flytesnacks",
     is_flag=False,
     help="Name of project to run functional tests on"
 )
 @click.option(
-    "test_project_domain",
+    "--test_project_domain",
     default="development",
     is_flag=False,
     help="Name of domain in project to run functional tests on",
