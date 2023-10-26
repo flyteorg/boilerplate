@@ -261,6 +261,9 @@ def run(
 
 
 @click.command()
+@click.argument("flytesnacks_release_tag")
+@click.argument("priorities")
+@click.argument("config_file")
 @click.option(
     "--return_non_zero_on_failure",
     default=False,
@@ -287,9 +290,6 @@ def run(
     is_flag=False,
     help="Name of domain in project to run functional tests on",
 )
-@click.argument("flytesnacks_release_tag")
-@click.argument("priorities")
-@click.argument("config_file")
 @click.argument(
     "cluster_pool_name",
     required=False,
