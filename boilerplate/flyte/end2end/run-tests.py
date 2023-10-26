@@ -97,8 +97,8 @@ def execute_workflow(
         cluster_pool_name: Optional[str] = None,
 ):
     print(f"Fetching workflow={workflow_name} and version={version}")
-    wf = remote.fetch_workflow(name=workflow_name, version=version, cluster_pool=cluster_pool_name)
-    return remote.execute(wf, inputs=inputs, wait=False)
+    wf = remote.fetch_workflow(name=workflow_name, version=version)
+    return remote.execute(wf, inputs=inputs, wait=False, cluster_pool=cluster_pool_name)
 
 
 def executions_finished(executions_by_wfgroup: Dict[str, List[FlyteWorkflowExecution]]) -> bool:
