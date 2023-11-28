@@ -75,6 +75,7 @@ def schedule_workflow_groups(
         workflow_group_item = list(
             filter(lambda item: item["name"] == wf_group, parsed_manifest)
         )
+        workflows = []
         if workflow_group_item:
             workflows = workflow_group_item[0]["examples"]
         executions_by_wfgroup[wf_group] = [
