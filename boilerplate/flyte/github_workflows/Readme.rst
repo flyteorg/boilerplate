@@ -7,7 +7,7 @@ Provides a two github actions workflows.
 
 Add ``flyteorg/github_workflows`` to your ``boilerplate/update.cfg`` file.
 
-Add a github secret ``package_name`` with the name to use for publishing (e.g. ``flytepropeller``). Typicaly, this will be the same name as the repository.
+Add a github secret ``package_name`` with the name to use for publishing (e.g. ``flytepropeller``). Typically, this will be the same name as the repository.
 
 *Note*: If you are working on a fork, include that prefix in your package name (``myfork/flytepropeller``).
 
